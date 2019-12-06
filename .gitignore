@@ -259,3 +259,12 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/lab8_v2/back_trav.csv
+/lab8_v2/associate2.xlsx
+/lab8_v2/associate2.csv
+/lab8_v2/associate.xlsx
+/lab8_v2/associate.csv
+/lab8_v2/front_trav.csv
+/lab8_v2/finalSchedule.xlsx
+/lab8_v2/rand_trav.csv
+/lab9_mangarakov.docx

@@ -116,7 +116,7 @@
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
@@ -156,6 +156,7 @@
     <ClInclude Include="ITestable.h" />
     <ClInclude Include="ITester.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="SparseArray.h" />
     <ClInclude Include="TestArray.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
@@ -171,6 +172,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SparseArray.cpp" />
     <ClCompile Include="TestArray.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>

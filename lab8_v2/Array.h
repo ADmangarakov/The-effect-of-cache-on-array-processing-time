@@ -6,7 +6,8 @@ enum TravOrder
 {
 	FRONT,
 	BACK,
-	RAND
+	RAND,
+	ASSOCIATE
 };
 
 class Array : public ITestable
@@ -19,6 +20,11 @@ class Array : public ITestable
 public:
 	Array(size_t size, TravOrder key);
 	void RunTest(Timer& timer, size_t iter);
+	size_t getSize() const
+	{
+		return size_;
+	}
+	size_t getN() const;
 	~Array();
 };
 

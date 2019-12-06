@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CSVgen.h"
+#include <iostream>
 
 
 CSVgen::CSVgen(char const * const fileName)
@@ -22,4 +23,5 @@ void CSVgen::writeData(size_t size, ull time)
 CSVgen::~CSVgen()
 {
 	file_.close();
+	std::cout << "delete CSVgen" << std::endl;
 }

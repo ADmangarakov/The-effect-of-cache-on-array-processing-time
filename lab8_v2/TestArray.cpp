@@ -1,14 +1,13 @@
 #include "pch.h"
 #include "TestArray.h"
+#include <iostream>
 
 
 
-
-TestArray::TestArray(size_t sizeMAX, size_t sizeMIN, size_t iter, TravOrder key)
-	:sizeMAX_(sizeMAX)
-	, sizeMIN_(sizeMIN)
-	, iter_(iter)
+TestArray::TestArray(size_t iter, TravOrder key, ITestable* testData)
+	:iter_(iter)
 	, key_(key)
+	, testArray_(testData)
 {
 	switch (key) {
 	case FRONT:
@@ -20,28 +19,21 @@ TestArray::TestArray(size_t sizeMAX, size_t sizeMIN, size_t iter, TravOrder key)
 	case RAND:
 		document_ = new CSVgen("rand_trav.csv");
 		break;
+	case ASSOCIATE:
+		document_ = new CSVgen("associate.csv");
+		break;
 	}
 }
 
 void TestArray::Test()
 {
-	size_t step = 0;
-	for (size_t N = sizeMIN_; N < sizeMAX_; N += step) {
-		testArray_ = new Array(N, key_);
-		testArray_->RunTest(timer_, iter_);
-		makeReport(N);
-		step = N / 32;
-	}
-}
-
-
-void TestArray::makeReport(size_t size)
-{
-	document_->writeData(size, timer_.getTime() / size);
+	testArray_->RunTest(timer_, iter_);
+	document_->writeData(testArray_->getN(), timer_.getTime() / testArray_->getSize());
 }
 
 
 TestArray::~TestArray()
 {
+	std::cout << "delete testArray" << std::endl;
 	delete document_;
 }

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Array.h"
+#include <iostream>
 
 
 Array::Array(size_t size, TravOrder key)
@@ -56,6 +57,10 @@ void Array::randTrav()
 	delete[] perm;
 }
 
+size_t Array::getN() const
+{
+	return getSize();
+}
 
 Array::~Array()
 {

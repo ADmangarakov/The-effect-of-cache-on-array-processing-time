@@ -3,27 +3,30 @@
 
 #include "pch.h"
 #include "TestArray.h"
+#include "SparseArray.h"
 
 int main()
 {
 	size_t const Nmin = 256;
 	size_t const Nmax = 32 * 1024 * 1024 / 4;
 	size_t K = 100;
-	TestArray frontTrav(Nmax, Nmin, K, FRONT);
-	frontTrav.Test();
-	TestArray backTrav(Nmax, Nmin, K, BACK);
-	backTrav.Test();
-	TestArray randTrav(Nmax, Nmin, K, RAND);
-	randTrav.Test();
+	//for (size_t i = 0; i < 3; i++) {
+	//	size_t step;
+	//	for (size_t N = 256; N < Nmax; N += step) {
+	//		Array* data = new Array(N, (TravOrder)i);
+	//		TestArray randTrav(K, (TravOrder)i, data);
+	//		randTrav.Test();
+	//		step = N / 32;
+	//		delete[] data;
+	//	}
+	//}
+	size_t const offset = 16 * 1024 * 1024;
+	size_t const size = 3 * 1024 * 1024;
+	for (size_t i = 1; i < 32; i++) {
+		SparseArray* data = new SparseArray(size, i, offset);
+		TestArray offTest(K, ASSOCIATE, data);
+		offTest.Test();
+		delete[] data;
+	}
+
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
