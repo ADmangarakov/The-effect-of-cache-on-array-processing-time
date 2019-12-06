@@ -2,11 +2,19 @@
 //
 
 #include "pch.h"
-#include <iostream>
+#include "TestArray.h"
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	size_t const Nmin = 256;
+	size_t const Nmax = 32 * 1024 * 1024 / 4;
+	size_t K = 100;
+	TestArray frontTrav(Nmax, Nmin, K, FRONT);
+	frontTrav.Test();
+	TestArray backTrav(Nmax, Nmin, K, BACK);
+	backTrav.Test();
+	TestArray randTrav(Nmax, Nmin, K, RAND);
+	randTrav.Test();
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
